@@ -1,0 +1,9 @@
+# requirements.txt
+streamlit
+pandas
+numpy
+python-dotenv
+psycopg2-binary
+openai
+pypdf2
+python-docx

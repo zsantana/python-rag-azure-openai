@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17  # Imagem oficial com PostgreSQL e pgvector pré-instalado
+    container_name: postgres-pgvector
+    environment:
+      POSTGRES_USER: postgres        # Usuário do PostgreSQL
+      POSTGRES_PASSWORD: postgres    # Senha do PostgreSQL
+      POSTGRES_DB: postgres          # Nome do banco de dados padrão
+    ports:
+      - "5432:5432"                  # Porta padrão do PostgreSQL
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # Volume para persistência dos dados
+    # networks:
+    #   - pg-network
+
+  pgadmin:
+    image: dpage/pgadmin4:9.1     # Imagem oficial do pgAdmin
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      
+    ports:
+      - "5050:80"                   # Mapeia a porta 5050 do host para a porta 80 do container
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin  # Volume para persistência dos dados do pgAdmin
+    depends_on:
+      - postgres                    # Garante que o PostgreSQL inicie antes do pgAdmin
+    # networks:
+    #   - pg-network
+
+volumes:
+  pgdata:                           # Volume nomeado para os dados do PostgreSQL
+  pgadmin-data:                     # Volume nomeado para os dados do pgAdmin
+
+# networks:
+#   pg-network:                      # Rede personalizada para comunicação entre os serviços
+#     driver: bridge

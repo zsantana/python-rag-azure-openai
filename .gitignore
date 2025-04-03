@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Logs e arquivos temporários
+*.log
+temp/
+
+# Configurações de IDEs
+.vscode/
+.idea/
+*.swp
+
+# Dependências
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Arquivos de build e distribuição
+dist/
+build/
+*.egg-info/
+
+# Configurações específicas de SO
+.DS_Store
+Thumbs.db
+
+
+db/
